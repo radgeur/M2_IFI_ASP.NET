@@ -11,21 +11,29 @@ namespace FilmManager.Controllers
     {
         //
         // GET: /Home/
-        //private Dal dal = new Dal();
 
         [HttpPost]
-        public ActionResult Connect(User u)
+        public ActionResult Connect(User user)
         {
-            //List<User> users = dal.getUsers();
-            if(u.login.Equals("toto")) 
-                return View("../Site/ListFilms");
-            else
-                return View("Index");
+            using (Dal dal = new Dal())
+            {
+                List<User> users = dal.getUsers();
+                foreach (User u in users)
+                {
+                    if (user.login.Equals(u.login))
+                    {
+                        if (user.password.Equals(u.password))
+                            return View("../Site/ListFilms");
+                    }
+                }
+
+                return View("Default");
+            }
         }
 
         public ActionResult Index()
         {
-            return View("Index");
+            return View();
         }
 
     }
