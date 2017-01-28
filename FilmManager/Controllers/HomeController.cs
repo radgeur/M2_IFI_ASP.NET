@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FilmManager.Models;
 
 namespace FilmManager.Controllers
 {
-    [HandleError]
     public class HomeController : Controller
     {
+        //
+        // GET: /Home/
+        //private Dal dal = new Dal();
+
+        [HttpPost]
+        public ActionResult Connect(User u)
+        {
+            //List<User> users = dal.getUsers();
+            if(u.login.Equals("toto")) 
+                return View("../Site/ListFilms");
+            else
+                return View("Index");
+        }
+
         public ActionResult Index()
         {
-            ViewData["Message"] = "Bienvenue dans ASP.NET MVC !";
-
-            return View();
+            return View("Index");
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
     }
 }
