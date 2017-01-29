@@ -25,6 +25,16 @@ namespace FilmManager.Models
             return bdd.films.ToList();
         }
 
+        public void deleteFilm(long id)
+        {
+            bdd.films.Remove(bdd.films.Find(id));
+        }
+
+        public Film getFilm(long id)
+        {
+            return bdd.films.Find(id);
+        }
+
         public void Dispose()
         {
             bdd.Dispose();

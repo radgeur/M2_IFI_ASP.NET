@@ -18,7 +18,7 @@ namespace FilmManager.Models
 
     public class Film
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public string title { get; set; }
     }
 

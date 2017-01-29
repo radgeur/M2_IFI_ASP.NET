@@ -11,24 +11,31 @@ namespace FilmManager.Controllers
     {
         //
         // GET: /Home/
-        //Session["login"] = null;
 
         [HttpPost]
-        public ActionResult Connect(User user)
+        public ActionResult Connected(User user)
         {
             using (Dal dal = new Dal())
             {
                 List<User> users = dal.getUsers();
-                foreach (User u in users)
+                if (user.login != null && user.password != null)
                 {
-                    if (user.login.Equals(u.login))
+                    foreach (User u in users)
                     {
-                        if (user.password.Equals(u.password))
-                            return View("../Site/ListFilms");
+                        if (user.login.Equals(u.login))
+                        {
+                            if (user.password.Equals(u.password))
+                            {
+                                Session["admin"] = u.admin;
+                                Session["panier"] = new List<Film>();
+                                return View("../Site/ListFilms", dal.getFilms());
+                            }
+                        }
                     }
                 }
 
-                return View("/");
+                Response.Redirect("/");
+                return View("Index");
             }
         }
 

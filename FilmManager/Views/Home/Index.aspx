@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1> Page de connexion</h1>
-    <form id="form1" runat="server" action="Home/Connect" submitdisabledcontrols="True">
+    <form id="form1" runat="server" action="Home/Connected" submitdisabledcontrols="True">
         <asp:TextBox ID="login" runat="server"></asp:TextBox> <br />
         <asp:TextBox ID="password" runat="server"></asp:TextBox> <br />
         <asp:Button ID="Button1" runat="server" Text="Button"  /> <br />
