@@ -24,7 +24,7 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [title] FROM [Film]"></asp:SqlDataSource>
+            SelectCommand="SELECT [title] FROM [Films]"></asp:SqlDataSource>
         
     </div>
     </form>

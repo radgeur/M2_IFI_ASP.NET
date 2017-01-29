@@ -11,6 +11,7 @@ namespace FilmManager.Controllers
     {
         //
         // GET: /Home/
+        //Session["login"] = null;
 
         [HttpPost]
         public ActionResult Connect(User user)
@@ -27,7 +28,7 @@ namespace FilmManager.Controllers
                     }
                 }
 
-                return View("Default");
+                return View("/");
             }
         }
 
