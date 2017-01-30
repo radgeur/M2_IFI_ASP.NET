@@ -26,6 +26,7 @@ namespace FilmManager.Controllers
                         {
                             if (user.password.Equals(u.password))
                             {
+                                Session["login"] = u.login;
                                 Session["admin"] = u.admin;
                                 Session["panier"] = new List<Film>();
                                 return View("../Site/ListFilms", dal.getFilms());

@@ -20,6 +20,15 @@ namespace FilmManager.Models
     {
         public long id { get; set; }
         public string title { get; set; }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Film f = (Film)obj;
+            return this.id == f.id;
+        }
     }
 
     public class FilmSaw
@@ -36,5 +45,6 @@ namespace FilmManager.Models
         }
         public DbSet<User> users { get; set; }
         public DbSet<Film> films { get; set; }
+        public DbSet<FilmSaw> filmsaw { get; set; }
     }
 }

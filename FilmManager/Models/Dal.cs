@@ -15,6 +15,11 @@ namespace FilmManager.Models
             bdd = new BddContext();
         }
 
+        public User getUser(String user)
+        {
+            return bdd.users.Find(user);
+        }
+
         public List<User> getUsers()
         {
             return bdd.users.ToList();
@@ -28,12 +33,19 @@ namespace FilmManager.Models
         public void deleteFilm(long id)
         {
             bdd.films.Remove(bdd.films.Find(id));
+            bdd.SaveChanges();
         }
 
         public Film getFilm(long id)
         {
             return bdd.films.Find(id);
         }
+
+        /*public void AddFilmSaw(String login, long id)
+        {
+            bdd.filmsaw.Add(new FilmSaw(bdd.users.Find(login), bdd.films.Find(id)));
+            bdd.SaveChanges();
+        }*/
 
         public void Dispose()
         {

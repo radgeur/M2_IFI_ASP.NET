@@ -8,7 +8,6 @@
     <title>ListFilms</title>
 </head>
 <body>
-    <form id="form1" runat="server">
     <div>
         <h1>Liste des films:</h1>
 
@@ -17,8 +16,8 @@
             { 
          %>
             <%: @Html.ActionLink("Sélectionner", "Selected", "ListFilms", new { id = f.id }, null)%>
-            <%: @Html.ActionLink("Vu", "Saw", "ListFilms")%>
-            <%: @Html.ActionLink("Pas vu", "Unsaw", "ListFilms")%>
+            <%: @Html.ActionLink("Vu", "Saw", "ListFilms", new { id = f.id }, null)%>
+            <%: @Html.ActionLink("Pas vu", "Unsaw", "ListFilms", new { id = f.id }, null)%>
             <% if(Session["admin"].Equals(true))
                { 
              %>
@@ -32,6 +31,5 @@
          <%: @Html.ActionLink("Accéder au panier", "Index", "Panier")%><br />
          <%: @Html.ActionLink("Déconnection", "Disconnected", "ListFilms")%>
     </div>
-    </form>
 </body>
 </html>

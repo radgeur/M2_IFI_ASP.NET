@@ -2,3 +2,4 @@ C:\Users\user\Documents\Travail Université\M2\Cours\IFI\ASP.NET\FilmManager\Fil
 C:\Users\user\Documents\Travail Université\M2\Cours\IFI\ASP.NET\FilmManager\FilmManager\bin\FilmManager.pdb
 C:\Users\user\Documents\Travail Université\M2\Cours\IFI\ASP.NET\FilmManager\FilmManager\obj\Debug\FilmManager.dll
 C:\Users\user\Documents\Travail Université\M2\Cours\IFI\ASP.NET\FilmManager\FilmManager\obj\Debug\FilmManager.pdb
+C:\Users\user\Documents\Travail Université\M2\Cours\IFI\ASP.NET\FilmManager\FilmManager\obj\Debug\FilmManager.csprojResolveAssemblyReference.cache
