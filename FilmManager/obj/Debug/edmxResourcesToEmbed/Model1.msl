@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FilmManagerModelStoreContainer" CdmEntityContainer="FilmManagerEntities2">
+    <EntitySetMapping Name="Film">
+      <EntityTypeMapping TypeName="FilmManagerModel.Film">
+        <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="FilmManagerModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="admin" ColumnName="admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FilmSaw" TypeName="FilmManagerModel.FilmSaw" StoreEntitySet="FilmSaw">
+      <EndProperty Name="Film">
+        <ScalarProperty Name="id" ColumnName="idFilm" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="login" ColumnName="login" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

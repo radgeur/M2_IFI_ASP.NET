@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FilmManagerModelStoreContainer">
+    <EntitySet Name="Film" EntityType="FilmManagerModel.Store.Film" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FilmSaw" EntityType="FilmManagerModel.Store.FilmSaw" store:Type="Tables" store:Schema="dbo" store:Name="FilmSaw">
+      <DefiningQuery>SELECT 
+      [FilmSaw].[login] AS [login], 
+      [FilmSaw].[idFilm] AS [idFilm]
+      FROM [dbo].[FilmSaw] AS [FilmSaw]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="User" EntityType="FilmManagerModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_FilmSaw_Film" Association="FilmManagerModel.Store.FK_FilmSaw_Film">
+      <End Role="Film" EntitySet="Film" />
+      <End Role="FilmSaw" EntitySet="FilmSaw" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FilmSaw_User" Association="FilmManagerModel.Store.FK_FilmSaw_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FilmSaw" EntitySet="FilmSaw" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--Erreurs détectées durant la génération :
+      Avertissement 6002: La table/vue « C:\USERS\USER\DOCUMENTS\TRAVAIL UNIVERSITÉ\M2\COURS\IFI\ASP.NET\FILMMANAGER\FILMMANAGER\APP_DATA\FILMMANAGER.MDF.dbo.FilmSaw » n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.
+      -->
+  <EntityType Name="FilmSaw">
+    <Key>
+      <PropertyRef Name="login" />
+      <PropertyRef Name="idFilm" />
+    </Key>
+    <Property Name="login" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="idFilm" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="login" />
+    </Key>
+    <Property Name="login" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="admin" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FilmSaw_Film">
+    <End Role="Film" Type="FilmManagerModel.Store.Film" Multiplicity="1" />
+    <End Role="FilmSaw" Type="FilmManagerModel.Store.FilmSaw" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FilmSaw">
+        <PropertyRef Name="idFilm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FilmSaw_User">
+    <End Role="User" Type="FilmManagerModel.Store.User" Multiplicity="1" />
+    <End Role="FilmSaw" Type="FilmManagerModel.Store.FilmSaw" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="login" />
+      </Principal>
+      <Dependent Role="FilmSaw">
+        <PropertyRef Name="login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
